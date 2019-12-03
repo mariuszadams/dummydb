@@ -1,0 +1,12 @@
+services:
+- mysql
+
+variables:
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: dummy
+  MYSQL_ROOT_PASSWORD: mysql
+
+connect:
+  image: mysql
+  script:
+  - mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE" -e "SELECT 'OK';"
